@@ -90,3 +90,19 @@ variable "database_subnet_tag_2" {
   type        = string
   default     = "my_database_subnet_az_1b"
 }
+
+############################# Public Route ##################################
+
+variable "public_route_table_tag" {
+  description = "Tag name for public route table"
+  type        = string
+  default     = "my_public_route_table"
+}
+
+############################# Database(Private) Route ##################################
+
+variable "database_route_table_tag" {
+  description = "Tage for database route table"
+  type        = string
+  default     = "my_database_route_table"
+}
