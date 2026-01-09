@@ -71,3 +71,31 @@ resource "aws_subnet" "database_subnet_2" {
     Name = var.database_subnet_tag_2
   }
 }
+
+################################################################################################
+##Public Route##
+################################################################################################
+
+resource "aws_route_table" "public_route_table" {
+  vpc_id = aws_vpc.sample_VPC.id
+  tags = {
+    Name = var.public_route_table_tag
+  }
+}
+
+resource "aws_route" "public_internet_gateway" {
+  route_table_id         = aws_route_table.public_route_table.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.sample_IGW.id
+}
+
+################################################################################
+##Database(Private) route table##
+################################################################################
+
+resource "aws_route_table" "database_route_table" {
+  vpc_id = aws_vpc.sample_VPC.id
+  tags = {
+    Name = var.database_route_table_tag
+  }
+}
