@@ -1,4 +1,4 @@
-#############################VPC##################################
+############################# VPC ##################################
 
 variable "cidr" {
   description = "Enter the CIDR range required for VPC"
@@ -22,4 +22,12 @@ variable "enable_dns_support" {
   description = "Enter DNS support"
   type        = bool
   default     = null
+}
+
+############################# Internet gateway ##################################
+
+variable "igw_tag" {
+  description = "Mention Tag needs to be associated with internet gateway"
+  type        = string
+  default     = "myigw"
 }

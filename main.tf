@@ -11,3 +11,15 @@ resource "aws_vpc" "sample_VPC" {
     Name = var.vpc_name
   }
 }
+
+
+################################################################################################
+##Internet gateway ##
+################################################################################################
+
+resource "aws_internet_gateway" "sample_IGW" {
+  vpc_id = aws_vpc.sample_VPC.id
+  tags = {
+    "Name" = var.igw_tag
+  }
+}
