@@ -99,3 +99,27 @@ resource "aws_route_table" "database_route_table" {
     Name = var.database_route_table_tag
   }
 }
+
+################################################################################
+##Route table association with subnets##
+################################################################################
+
+resource "aws_route_table_association" "public_route_table_association_1" {
+  subnet_id      = aws_subnet.public_subnet_1.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+resource "aws_route_table_association" "public_route_table_association_2" {
+  subnet_id      = aws_subnet.public_subnet_2.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+resource "aws_route_table_association" "database_route_table_association_1" {
+  subnet_id      = aws_subnet.database_subnet_1.id
+  route_table_id = aws_route_table.database_route_table.id
+}
+
+resource "aws_route_table_association" "database_route_table_association_2" {
+  subnet_id      = aws_subnet.database_subnet_2.id
+  route_table_id = aws_route_table.database_route_table.id
+}
